@@ -5,10 +5,12 @@
     <th>From</th>
     <th>Time</th>
   </tr>
-  <tr>
-    <td>Richard</td>
-    <td>UA 123</td>
-    <td>PHX</td>
-    <td>2:38pm</td>
-  </tr>
+  <% @arrivals.each do |arrival| %>
+    <tr>
+      <td><%= arrival.passenger_name %></td>
+      <td><%= arrival.flight_number %></td>
+      <td><%= arrival.from %></td>
+      <td><%= arrival.arrival_time.to_s(:pretty_time) %></td>
+    </tr>
+  <% end %>
 </table>

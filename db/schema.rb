@@ -10,6 +10,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20110214233857) do
+
+  create_table "arrivals", :force => true do |t|
+    t.string   "passenger_name"
+    t.string   "flight_number"
+    t.string   "from"
+    t.time     "arrival_time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
