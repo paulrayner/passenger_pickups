@@ -1,0 +1,2 @@
+module TodaysArrivalsHelper
+end
