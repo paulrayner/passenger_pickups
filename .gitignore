@@ -1,0 +1,13 @@
+.bundle
+db/*.sqlite3
+log/*.log
+tmp/**/*
+tmp/*
+.DS_Store
+/log/*.pid
+/coverage/*
+public/system/*
+.idea/*
+tmp/metric_fu/*
+tmp/sent_mails/*
+.sass-cache/
