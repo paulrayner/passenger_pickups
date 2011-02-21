@@ -1,3 +1,16 @@
+Given /^the following arrivals?:$/ do |arrivals_table|
+  arrivals = arrivals_table.hashes
+  arrivals.each do |arrival|
+    @last_arrival_created = Arrival.new(
+        :passenger_name => arrival["Name"],
+        :flight_number  => arrival["Flight"],
+        :from           => arrival["From"],
+        :arrival_time   => arrival["Time"]
+    )
+    @last_arrival_created.save!
+  end
+end
+
 Given /^there are no arrivals$/ do
   Arrival.delete_all
 end
@@ -24,4 +37,14 @@ Then /^there should be (\d+) arrival with:$/ do |expected_arrivals_count, expect
     }
   end
   expected_arrivals_table.diff!(actual_arrivals_table)
+end
+
+When /^I modify the arrival with:$/ do |table|
+  arrival_attributes = table.rows_hash
+  visit edit_arrival_path(@last_arrival_created)
+  fill_in 'Name:', :with => arrival_attributes["Name"] if arrival_attributes.has_key?('Name')
+  fill_in 'Flight #:', :with => arrival_attributes["Flight"] if arrival_attributes.has_key?('Flight')
+  fill_in 'From:', :with => arrival_attributes["From"] if arrival_attributes.has_key?('From')
+  fill_in 'Arrival Time:', :with => arrival_attributes["Time"] if arrival_attributes.has_key?('Time')
+  click_button 'Update Arrival'
 end

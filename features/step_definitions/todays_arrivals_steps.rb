@@ -1,15 +1,3 @@
-Given /^the following arrivals?:$/ do |arrivals_table|
-  arrivals = arrivals_table.hashes
-  arrivals.each do |arrival|
-    Arrival.create!(
-        :passenger_name => arrival["Name"],
-        :flight_number  => arrival["Flight"],
-        :from           => arrival["From"],
-        :arrival_time   => arrival["Time"]
-    )
-  end
-end
-
 When /^I view today's arrivals$/ do
   visit "/"
 end

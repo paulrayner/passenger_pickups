@@ -16,4 +16,18 @@ class ArrivalsController < ApplicationController
   def show
 
   end
+
+  def edit
+    @arrival = Arrival.find(params[:id])
+  end
+
+  def update
+    @arrival = Arrival.find(params[:id])
+
+    if @arrival.update_attributes(params[:arrival])
+      redirect_to arrival_url(@arrival), :notice => "Arrival updated!"
+    else
+      render :action => "edit"
+    end
+  end
 end
