@@ -13,14 +13,14 @@ When /^I create an arrival with:$/ do |table|
 end
 
 Then /^there should be (\d+) arrival with:$/ do |expected_arrivals_count, expected_arrivals_table|
-  Arrival.count.should == expected_arrivals_count
+  Arrival.count.should == expected_arrivals_count.to_i
   arrivals = Arrival.all
   actual_arrivals_table = arrivals.map do |arr|
     {
         "Name" => arr.passenger_name,
         "Flight" => arr.flight_number,
         "From" => arr.from,
-        "Time" => arr.arrival_time
+        "Time" => arr.arrival_time.to_s(:pretty_time).strip
     }
   end
   expected_arrivals_table.diff!(actual_arrivals_table)
