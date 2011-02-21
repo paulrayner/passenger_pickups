@@ -4,12 +4,12 @@ end
 
 When /^I create an arrival with:$/ do |table|
   arrival_attributes = table.rows_hash
-  visit '/arrival/new'
-  fill_in 'Name', :with => arrival_attributes["Name"]
-  fill_in 'Flight #', :with => arrival_attributes["Flight"]
-  fill_in 'From', :with => arrival_attributes["From"]
-  fill_in 'Arrival Time', :with => arrival_attributes["Time"]
-  submit
+  visit '/arrivals/new'
+  fill_in 'Name:', :with => arrival_attributes["Name"]
+  fill_in 'Flight #:', :with => arrival_attributes["Flight"]
+  fill_in 'From:', :with => arrival_attributes["From"]
+  fill_in 'Arrival Time:', :with => arrival_attributes["Time"]
+  click_button 'Create Arrival'
 end
 
 Then /^there should be (\d+) arrival with:$/ do |expected_arrivals_count, expected_arrivals_table|

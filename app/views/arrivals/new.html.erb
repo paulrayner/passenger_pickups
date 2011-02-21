@@ -1,2 +1,13 @@
-<h1>Arrivals#new</h1>
-<p>Find me in app/views/arrivals/new.html.erb</p>
+<h1>Add New Arrival</h1>
+<%= form_for :arrival do |f| %>
+  <p>
+    <%= f.label :name, 'Name:' %> <%= f.text_field(:name) %></p>
+  <p>
+    <%= f.label :flight_number, 'Flight #:'%> <%= f.text_field :flight_number %></p>
+  <p>
+    <%= f.label :from, 'From:'%> <%= f.text_field :from %></p>
+  <p>
+    <%= f.label :arrival_time, 'Arrival Time:'%> <%= f.text_field :arrival_time %></p>
+  <p>
+    <%= f.submit 'Create Arrival' %></p>
+<% end %>
