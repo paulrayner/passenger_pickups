@@ -12,7 +12,6 @@ Feature: Today's Arrivals
       | Name    | Flight | From | Time   |
       | Richard | UA 123 | PHX  | 2:38pm |
 
-
   Scenario: Display multiple arrivals
     Given the following arrivals:
       | Name    | Flight | From | Time   |
