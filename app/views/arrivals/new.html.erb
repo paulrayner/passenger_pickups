@@ -1,7 +1,7 @@
 <h1>Add New Arrival</h1>
-<%= form_for :arrival do |f| %>
+<%= form_for @arrival do |f| %>
   <p>
-    <%= f.label :name, 'Name:' %> <%= f.text_field(:name) %></p>
+    <%= f.label :passenger_name, 'Name:' %> <%= f.text_field :passenger_name %></p>
   <p>
     <%= f.label :flight_number, 'Flight #:'%> <%= f.text_field :flight_number %></p>
   <p>
