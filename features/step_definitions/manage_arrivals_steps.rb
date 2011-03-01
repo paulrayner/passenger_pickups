@@ -2,11 +2,19 @@ Given /^the following arrivals?:$/ do |arrivals_table|
   Arrival.delete_all
   arrivals = arrivals_table.hashes
   arrivals.each do |arrival|
+    if arrival["Date"] == "today"
+      arrival_time = DateTime.parse(arrival["Time"])
+    elsif arrival["Date"] == "tomorrow"
+      arrival_time = DateTime.parse(arrival["Time"]) + 1.day
+    else
+      arrival_time = DateTime.parse("#{arrival["Date"]} #{arrival["Time"]}")
+    end
+    
     @last_arrival_created = Arrival.new(
         :passenger_name => arrival["Name"],
         :flight_number => arrival["Flight"],
         :from => arrival["From"],
-        :arrival_time => "#{arrival["Date"]} #{arrival["Time"]}"
+        :arrival_time => arrival_time
     )
     @last_arrival_created.save!
   end

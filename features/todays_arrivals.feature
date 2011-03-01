@@ -22,3 +22,17 @@ Feature: Today's Arrivals
       | Name    | Flight | From | Time   |
       | Richard | UA 123 | PHX  | 2:38pm |
       | Paul    | BA 219 | LHR  | 5:20pm |
+
+  Scenario: Display multiple arrivals, but only today's
+    Given the following arrivals:
+      | Name    | Flight | From | Date     | Time   |
+      | Richard | UA 123 | PHX  | today    | 2:38pm |
+      | Jane    | BA 219 | LHR  | tomorrow | 5:20pm |
+      | Paul    | BA 219 | LHR  | today    | 5:20pm |
+    When I view today's arrivals
+    Then I should see the following:
+      | Name    | Flight | From |
+      | Richard | UA 123 | PHX  |
+      | Paul    | BA 219 | LHR  |
+
+
