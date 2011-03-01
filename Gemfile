@@ -7,6 +7,7 @@ group :development, :test do
   gem "rspec-rails", ">= 2.5.0"
   gem "cucumber", "~> 0.10.0"
   gem "cucumber-rails"
+  gem "database_cleaner"
   gem "nokogiri"
   gem "capybara"
 end

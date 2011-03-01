@@ -7,7 +7,7 @@
   <p>
     <%= f.label :from, 'From:'%> <%= f.text_field :from %></p>
   <p>
-    <%= f.label :arrival_time, 'Arrival Time:'%> <%= f.text_field :arrival_time %></p>
+    <%= f.label :arrival_time, 'Arrival Time:'%> <%= f.datetime_select :arrival_time %></p>
   <p>
     <%= f.submit 'Update Arrival' %></p>
 <% end %>

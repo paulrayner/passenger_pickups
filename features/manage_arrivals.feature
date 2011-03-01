@@ -17,13 +17,13 @@ Feature: Manage Arrivals
 
   Scenario: Modify arrival
     Given the following arrival:
-      | Name    | Flight | From | Date      | Time   |
-      | Richard | UA 123 | PHX  | 2/28/2011 | 2:38pm |
+      | Name | Flight | From | Date      | Time    |
+      | Paul | UA 456 | BOS  | 2/28/2011 | 11:20am |
     When I modify the arrival with:
       | Flight | UA 320 |
-      | From   | PHX    |
+      | From   | BOS    |
       | Time   | 1:15pm |
     Then there should be 1 arrival with:
-      | Name    | Flight | From | Date      | Time   |
-      | Richard | UA 320 | PHX  | 2/28/2011 | 1:15pm |
+      | Name | Flight | From | Date      | Time   |
+      | Paul | UA 320 | BOS  | 2/28/2011 | 1:15pm |
 
