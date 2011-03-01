@@ -21,7 +21,12 @@ When /^I create an arrival with:$/ do |table|
   fill_in 'Name:', :with => arrival_attributes["Name"]
   fill_in 'Flight #:', :with => arrival_attributes["Flight"]
   fill_in 'From:', :with => arrival_attributes["From"]
-  fill_in 'Arrival Time:', :with => arrival_attributes["Time"]
+  arrival_time = DateTime.parse "#{arrival_attributes["Date"]} #{arrival_attributes["Time"]}"
+  select arrival_time.year.to_s, :from => 'arrival_arrival_time_1i'
+  select arrival_time.strftime("%B"), :from => 'arrival_arrival_time_2i'
+  select arrival_time.day.to_s, :from => 'arrival_arrival_time_3i'
+  select arrival_time.hour.to_s, :from => 'arrival_arrival_time_4i'
+  select arrival_time.min.to_s, :from => 'arrival_arrival_time_5i'
   click_button 'Create Arrival'
 end
 
