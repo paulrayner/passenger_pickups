@@ -35,4 +35,12 @@ Feature: Today's Arrivals
       | Richard | UA 123 | PHX  |
       | Paul    | BA 219 | LHR  |
 
-
+  Scenario: Flight delay
+    Given the following arrival:
+      | Name    | Flight | From | Date  | Time   |
+      | Richard | UA 123 | PHX  | today | 2:38pm |
+    And the arrival time has been delayed to 3:10pm
+    When I view today's arrivals
+    Then I should see the following:
+      | Name    | Flight | From | Scheduled Time | Status  | Actual Time |
+      | Richard | UA 123 | PHX  | 2:38pm         | Delayed | 3:10pm      |
