@@ -38,6 +38,7 @@ Then /^there should be (\d+) arrival with:$/ do |expected_arrivals_count, expect
         "Name" => arr.passenger_name,
         "Flight" => arr.flight_number,
         "From" => arr.from,
+        "Date" => "#{arr.arrival_time.month}/#{arr.arrival_time.day}/#{arr.arrival_time.year}",
         "Time" => arr.arrival_time.to_s(:pretty_time).strip
     }
   end
