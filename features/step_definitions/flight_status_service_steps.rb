@@ -11,8 +11,17 @@ Given /^the following flights:$/ do |flight_details_table|
   end
 end
 
+When /^I request status for all flights$/ do
+  @flights = FlightStatus.all
+end
+
+Then /^I should receive status for (\d+) flights$/ do |expected_flight_count|
+  @flights.count.should == expected_flight_count.to_i
+end
+
+
 When /^I request status for (yesterday|today|tomorrow)'s flight ([A-Z\d]{2} \d+) from ([A-Z]{3})$/ do |flight_day, flight_number, from|
-  pending # express the regexp above with the code you wish you had
+  get "/flight.json?day=#{flight_day}&number=#{flight_number}&from=#{from}"
 end
 
 Then /^I should receive the following flight details$/ do |expected_flight_details_table|

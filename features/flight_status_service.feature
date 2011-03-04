@@ -14,6 +14,10 @@ Feature: Flight status service
       | F9 781        | ORD  | yesterday      | 3:45pm         | yesterday    | 3:45pm       | Landed  |
       | BA 219        | LHR  | yesterday      | 5:20pm         | yesterday    | 5:27pm       | Landed  |
 
+  Scenario: Get status of all flights
+    When I request status for all flights
+    Then I should receive status for 6 flights
+    
   Scenario: Details for a single flight today
     When I request status for today's flight WN 4569 from ERW
     Then I should receive the following flight details

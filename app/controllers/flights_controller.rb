@@ -1,6 +1,6 @@
 class FlightsController < ApplicationController
   def index
-    render :json => Flight.all.as_json
+    render :xml => Flight.all
   end
 
   def show
