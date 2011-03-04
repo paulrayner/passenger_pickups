@@ -19,6 +19,13 @@ begin
       t.fork = true # You may get faster startup if you set this to false
       t.profile = 'default'
     end
+    
+    Cucumber::Rake::Task.new({:current => 'db:test:prepare'}, 'Run features that are being worked on without the wip semantics') do |t|
+      t.binary = vendored_cucumber_bin # If nil, the gem's binary is used.
+      t.fork = true # You may get faster startup if you set this to false
+      t.profile = 'default'
+      t.cucumber_opts = '--tags @current'
+    end
 
     Cucumber::Rake::Task.new({:wip => 'db:test:prepare'}, 'Run features that are being worked on') do |t|
       t.binary = vendored_cucumber_bin

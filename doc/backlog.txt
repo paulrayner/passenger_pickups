@@ -6,6 +6,7 @@ Get notified when a passenger's flight changes
 - Service contract:
   input: Flight, Origin, Date
   output: Status (On Time, Delayed, Cancelled, Landed), Scheduled Time, Current(Estimated?) Time
+  for added realism: use departure and arrival dates and times
 Get notified when a passenger's flight lands
 Enter a pickup by email
 Enter a pickup by SMS
