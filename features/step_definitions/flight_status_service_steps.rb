@@ -21,10 +21,15 @@ end
 
 
 When /^I request status for (yesterday|today|tomorrow)'s flight ([A-Z\d]{2} \d+) from ([A-Z]{3})$/ do |flight_day, flight_number, from|
-  get "/flight.json?day=#{flight_day}&number=#{flight_number}&from=#{from}"
+  flight_date = relative_date(flight_day)
+  @flight = FlightStatus.find(:one, :params => {:flight_date => flight_date, :flight_number => flight_number, :from => from})
 end
 
 Then /^I should receive the following flight details$/ do |expected_flight_details_table|
-  # table is a Cucumber::Ast::Table
-  pending # express the regexp above with the code you wish you had
+  expected_flight_details = expected_flight_details_table.rows_hash
+  @flight.flight_number.should == expected_flight_details["Flight Number"]
+  @flight.from.should == expected_flight_details["From"]
+  @flight.scheduled_time.should == DateTime.parse("#{relative_date(expected_flight_details["Scheduled Date"])} #{expected_flight_details["Scheduled Time"]}")
+  @flight.current_time.should == DateTime.parse("#{relative_date(expected_flight_details["Current Date"])} #{expected_flight_details["Current Time"]}")
+  @flight.status.should == expected_flight_details["Status"]
 end
