@@ -1,5 +1,7 @@
 class FlightsController < ApplicationController
   respond_to :xml
+  USERNAME, PASSWORD = 'flight_status', '2eekX8Vx'
+  before_filter :authenticate
 
   def index
     respond_with Flight.all
@@ -52,5 +54,13 @@ class FlightsController < ApplicationController
     @flight.current_time = params[:new_arrival_time]
     @flight.save
     respond_with(@flight)
+  end
+
+  private
+
+  def authenticate
+    authenticate_or_request_with_http_basic do |user_name, password|
+      user_name == USERNAME && password == PASSWORD
+    end
   end
 end

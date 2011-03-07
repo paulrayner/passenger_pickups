@@ -1,6 +1,8 @@
 class FlightStatus < ActiveResource::Base
   self.site = "http://localhost:3000"
   self.element_name = "flight"
+  self.user = 'flight_status'
+  self.password = '2eekX8Vx'
 
   def delay(new_arrival_time)
     put(:delay, :new_arrival_time => new_arrival_time)
