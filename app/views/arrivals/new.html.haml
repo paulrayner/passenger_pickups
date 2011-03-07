@@ -1,0 +1,16 @@
+%h1 Add New Arrival
+= form_for @arrival do |f|
+  %p
+    = f.label :passenger_name, 'Name:'
+    = f.text_field :passenger_name
+  %p
+    = f.label :flight_number, 'Flight #:'
+    = f.text_field :flight_number
+  %p
+    = f.label :from, 'From:'
+    = f.text_field :from
+  %p
+    = f.label :arrival_time, 'Arrival Time:'
+    = f.datetime_select :arrival_time
+  %p
+    = f.submit 'Create Arrival'

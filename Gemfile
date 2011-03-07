@@ -11,4 +11,6 @@ group :development, :test do
   gem "database_cleaner"
   gem "nokogiri"
   gem "capybara"
+  gem 'hpricot'
+  gem 'ruby_parser'
 end
