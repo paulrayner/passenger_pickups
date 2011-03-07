@@ -12,9 +12,9 @@
       <td><%= arrival.passenger_name %></td>
       <td><%= arrival.flight_number %></td>
       <td><%= arrival.from %></td>
-      <td><%= arrival.arrival_time.to_s(:pretty_time) %></td>
-      <td>On Time</td>
-      <td><%= arrival.arrival_time.to_s(:pretty_time) %></td>
+      <td><%= arrival.flight_status.scheduled_time.to_s(:pretty_time) %></td>
+      <td><%= arrival.flight_status.status %></td>
+      <td><%= arrival.flight_status.current_time.to_s(:pretty_time) %></td>
     </tr>
   <% end %>
 </table>

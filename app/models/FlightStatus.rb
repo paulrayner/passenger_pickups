@@ -12,5 +12,9 @@ class FlightStatus < ActiveResource::Base
     def delete_all
       self.delete(:delete_all)
     end
+
+    def status(scheduled_date, flight_number, from)
+      self.find(:one, :from => :status, :params => {:scheduled_date => scheduled_date, :flight_number => flight_number, :from => from})
+    end
   end
 end
