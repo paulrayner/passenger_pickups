@@ -10,7 +10,6 @@ Feature: Today's Arrivals
       | BA 219        | LHR  | today          | 5:20pm         |
       | BA 219        | LHR  | tomorrow       | 5:20pm         |
 
-  @current
   Scenario: Display first arrival information
     Given the following arrival:
       | Name    | Flight | From | Time   |

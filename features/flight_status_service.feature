@@ -49,4 +49,15 @@ Feature: Flight status service
       | Current Date   | today   |
       | Current Time   | 10:23am |
       | Status         | On Time |
-    
+
+  Scenario: Delay a flight
+    Given the arrival time for today's flight DL 123 from SLC has been delayed to 11:00am
+    When I request status for today's flight DL 123 from SLC
+    Then I should receive the following flight details
+      | Flight Number  | DL 123  |
+      | From           | SLC     |
+      | Scheduled Date | today   |
+      | Scheduled Time | 10:23am |
+      | Current Date   | today   |
+      | Current Time   | 11:00am |
+      | Status         | Delayed |

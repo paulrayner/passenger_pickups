@@ -17,7 +17,7 @@ end
 Given /^the arrival time for (yesterday|today|tomorrow)'s flight ([A-Z\d]{2} \d+) from ([A-Z]{3}) has been delayed to (.*)$/ do |flight_day, flight_number, from, new_arrival_time|
   flight_date = relative_date(flight_day)
   @flight = FlightStatus.status(flight_date, flight_number, from)
-  @flight.delay(:new_arrival_time => DateTime.parse("#{flight_date} #{new_arrival_time}"))
+  @flight.delay(DateTime.parse("#{flight_date} #{new_arrival_time}"))
 end
 
 When /^I request status for all flights$/ do
