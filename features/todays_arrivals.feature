@@ -1,3 +1,4 @@
+@current
 Feature: Today's Arrivals
   In order to pick up passengers at the right times
   As a car service driver
@@ -39,7 +40,10 @@ Feature: Today's Arrivals
     Given the following arrival:
       | Name    | Flight | From | Date  | Time   |
       | Richard | UA 123 | PHX  | today | 2:38pm |
-    And the arrival time has been delayed to 3:10pm
+    And the following flight in the flight status system:
+      | Flight Number | From | Scheduled Date | Scheduled Time |
+      | UA 123        | PHX  | today          | 2:38pm         |
+    And the arrival time for today's flight UA 123 from PHX has been delayed to 3:10pm
     When I view today's arrivals
     Then I should see the following:
       | Name    | Flight | From | Scheduled Time | Status  | Actual Time |

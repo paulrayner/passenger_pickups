@@ -4,6 +4,10 @@ PassengerPickups::Application.routes.draw do
       get 'status'
       delete 'delete_all'
     end
+
+    member do
+      put 'delay'
+    end
   end
 
 

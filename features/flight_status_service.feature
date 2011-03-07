@@ -1,11 +1,10 @@
-@current
 Feature: Flight status service
   In order to show my users up-to-date flight information
   As an application
   I want a service with flight status information
 
   Background:
-    Given the following flights:
+    Given the following flights in the flight status system:
       | Flight Number | From | Scheduled Date | Scheduled Time | Current Date | Current Time | Status  |
       | DL 123        | SLC  | today          | 10:23am        | today        | 10:23am      | On Time |
       | WN 4569       | ERW  | today          | 12:15pm        | today        | 12:30pm      | Delayed |

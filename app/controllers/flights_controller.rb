@@ -45,4 +45,12 @@ class FlightsController < ApplicationController
     Flight.delete_all
     respond_with Flight.all
   end
+
+  def delay
+    @flight = Flight.find(params[:id])
+    @flight.status = 'Delayed'
+    @flight.current_time = params[:new_arrival_time]
+    @flight.save
+    respond_with(@flight)
+  end
 end
