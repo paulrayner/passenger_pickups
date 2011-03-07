@@ -1,3 +1,6 @@
+%h1
+  Today's Arrivals
+
 %table#todays_arrivals
   %tr
     %th Name
@@ -11,6 +14,11 @@
       %td= arrival.passenger_name
       %td= arrival.flight_number
       %td= arrival.from
-      %td= arrival.flight_status.scheduled_time.to_s(:pretty_time)
-      %td= arrival.flight_status.status
-      %td= arrival.flight_status.current_time.to_s(:pretty_time)
+      - if arrival.flight_status_available?
+        %td= arrival.flight_status.scheduled_time.to_s(:pretty_time)
+        %td= arrival.flight_status.status
+        %td= arrival.flight_status.current_time.to_s(:pretty_time)
+      - else
+        %td= arrival.arrival_time
+        %td Unknown
+        %td

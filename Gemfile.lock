@@ -133,6 +133,7 @@ DEPENDENCIES
   cucumber (~> 0.10.0)
   cucumber-rails
   database_cleaner
+  haml
   hpricot
   nokogiri
   rails (= 3.0.4)

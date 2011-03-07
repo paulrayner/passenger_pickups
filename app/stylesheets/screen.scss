@@ -11,3 +11,25 @@
 @import "partials/page";
 @import "partials/form";
 @import "partials/two_col";
+
+@import "blueprint/typography";
+
+@import "blueprint/scaffolding";
+
+@include blueprint-scaffolding("body.bp");
+@include blueprint-typography("body.bp");
+
+@import "compass/utilities/tables";
+
+div#content {
+  margin: 10px
+}
+
+table#todays_arrivals {
+  @include table-scaffolding;
+  width: auto;
+  min-width: 0;
+  th, td {
+    padding: 8px;
+  }
+}
