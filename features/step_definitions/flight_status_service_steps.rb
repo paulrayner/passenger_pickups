@@ -1,7 +1,7 @@
 Given /^the following flights:$/ do |flight_details_table|
-  Flight.delete_all
+  FlightStatus.delete_all
   flight_details_table.hashes.each do |flight_details_row|
-    Flight.create(
+    FlightStatus.create(
             :flight_number => flight_details_row["Flight Number"],
             :from => flight_details_row["From"],
             :scheduled_time => "#{relative_date(flight_details_row["Scheduled Date"])} #{flight_details_row["Scheduled Time"]}",
@@ -22,7 +22,7 @@ end
 
 When /^I request status for (yesterday|today|tomorrow)'s flight ([A-Z\d]{2} \d+) from ([A-Z]{3})$/ do |flight_day, flight_number, from|
   flight_date = relative_date(flight_day)
-  @flight = FlightStatus.find(:one, :params => {:flight_date => flight_date, :flight_number => flight_number, :from => from})
+  @flight = FlightStatus.find(:one, :from => :status, :params => {:scheduled_date => flight_date, :flight_number => flight_number, :from => from})
 end
 
 Then /^I should receive the following flight details$/ do |expected_flight_details_table|

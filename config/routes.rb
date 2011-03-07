@@ -1,5 +1,11 @@
 PassengerPickups::Application.routes.draw do
-  resources :flights
+  resources :flights do
+    collection do
+      get 'status'
+      delete 'delete_all'
+    end
+  end
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
