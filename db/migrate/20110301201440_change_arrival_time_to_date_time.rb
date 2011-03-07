@@ -1,9 +1,11 @@
 class ChangeArrivalTimeToDateTime < ActiveRecord::Migration
   def self.up
-    change_column :arrivals, :arrival_time, :datetime
+    remove_column :arrivals, :arrival_time
+    add_column :arrivals, :arrival_time, :datetime
   end
 
   def self.down
-    change_column :arrivals, :arrival_time, :time
+    remove_column :arrivals, :arrival_time
+    add_column :arrivals, :arrival_time, :time
   end
 end
