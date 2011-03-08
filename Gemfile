@@ -4,6 +4,7 @@ gem 'rails', '3.0.4'
 gem 'sqlite3'
 gem 'compass', '>= 0.10.6'
 gem 'haml'
+gem 'fastercsv'
 
 group :development, :test do
   gem "rspec-rails", ">= 2.5.0"
