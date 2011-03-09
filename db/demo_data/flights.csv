@@ -23,7 +23,7 @@ UA 6765,BZN,Arrived,3:10 PM,today
 UA 6972,YYC,Arrived,2:58 PM,today
 UA 7007,YYC,Now 06:12 PM,6:00 PM,today
 UA 834,CUN,Now 05:36 PM,4:57 PM,today
-UA 6377,CPR,Cancelled,1:40 PM,today
+UA 6377,CPR,Canceled,1:40 PM,today
 UA 6677,CID,Now 07:00 PM,5:57 PM,today
 UA 2257,CLT,Now 01:54 PM,1:41 PM,today
 UA 279,EWR,Arrived,12:42 PM,today
@@ -119,7 +119,7 @@ UA 6649,RKS,Now 04:11 PM,4:25 PM,today
 UA 6881,SMF,Now 04:28 PM,2:40 PM,today
 UA 448,SMF,On Time,5:13 PM,today
 UA 7448,ORD,Arrived,12:54 PM,today
-UA 7435,STL,Cancelled,5:57 PM,today
+UA 7435,STL,Canceled,5:57 PM,today
 UA 252,SLC,Arrived,3:03 PM,today
 UA 7396,SAT,Arrived,1:01 PM,today
 UA 7650,SAT,On Time,4:42 PM,today
