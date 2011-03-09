@@ -1,24 +1,16 @@
 require 'rubygems'
 require 'fastercsv'
 
-def relative_date(date_name)
-  case date_name
-    when "today"
-      return Date.today
-    when "yesterday"
-      return Date.today - 1.day
-    when "tomorrow"
-      return Date.today + 1.day
-    else
-      return nil
-  end
-end
+require File.join(File.dirname(__FILE__), 'lib/helpers')
 
 Flight.delete_all
 
 source_path = File.join(File.dirname(__FILE__), 'flights.csv')
-
+$stdout.print 'Creating flights'
 FasterCSV.foreach(source_path, { :headers => :first_row, :header_converters => :symbol }) do |row|
+  $stdout.print '.'
+  $stdout.flush
+
   status = row[:status]
   scheduled_time = "#{relative_date(row[:day])} #{row[:scheduled_time]}"
   current_time = scheduled_time
@@ -30,6 +22,10 @@ FasterCSV.foreach(source_path, { :headers => :first_row, :header_converters => :
     else
       status = 'On Time'
     end
+  end
+
+  if status == 'Arrived' && DateTime.parse(scheduled_time) > DateTime.now
+    status = 'On Time'
   end
 
   if status == 'Canceled'
@@ -44,3 +40,4 @@ FasterCSV.foreach(source_path, { :headers => :first_row, :header_converters => :
           :current_time => current_time
   )
 end
+$stdout.print "Done.\n"

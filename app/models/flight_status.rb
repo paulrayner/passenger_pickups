@@ -1,5 +1,5 @@
 class FlightStatus < ActiveResource::Base
-  self.site = "http://localhost:3000"
+  self.site = (::Rails.env == 'production') ? "http://passenger-pickups.heroku.com/" : "http://localhost:3000"
   self.element_name = "flight"
   self.user = 'flight_status'
   self.password = '2eekX8Vx'
