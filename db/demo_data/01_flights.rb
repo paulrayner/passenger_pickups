@@ -12,11 +12,11 @@ FasterCSV.foreach(source_path, { :headers => :first_row, :header_converters => :
   $stdout.flush
 
   status = row[:status]
-  scheduled_time = "#{relative_date(row[:day])} #{row[:scheduled_time]}"
+  scheduled_time = DateTime.parse("#{relative_date(row[:day])} #{row[:scheduled_time]}")
   current_time = scheduled_time
 
   if status.starts_with?('Now ')
-    current_time = "#{relative_date(row[:day])} #{status.from(4)}"
+    current_time = DateTime.parse("#{relative_date(row[:day])} #{status.from(4)}")
     if current_time > scheduled_time
       status = 'Delayed'
     else
@@ -24,7 +24,7 @@ FasterCSV.foreach(source_path, { :headers => :first_row, :header_converters => :
     end
   end
 
-  if status == 'Arrived' && DateTime.parse(scheduled_time) > DateTime.now
+  if status == 'Arrived' && scheduled_time > DateTime.now
     status = 'On Time'
   end
 
