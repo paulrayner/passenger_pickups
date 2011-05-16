@@ -56,6 +56,11 @@ class FlightsController < ApplicationController
     respond_with(@flight)
   end
 
+  def reset_data
+    @cmd_output = `rake db:demo_data:load`
+    render :text => @cmd_output
+  end
+
   private
 
   def authenticate

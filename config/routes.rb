@@ -3,6 +3,7 @@ PassengerPickups::Application.routes.draw do
     collection do
       get 'status'
       delete 'delete_all'
+      get 'reset_data'
     end
 
     member do
