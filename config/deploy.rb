@@ -11,7 +11,6 @@ server "humanizingwork.com", :app, :web, :db, :primary => true
 set :deploy_to, "/var/www/#{application}"
 
 set :rails_env, 'practice1'
-set :rails_env_base, 'practice'
 
 ssh_options[:port] = 2221
 set :user, 'richard'
@@ -49,6 +48,8 @@ namespace :deploy do
   end
 
   task :migrate_all, :roles => :db do
+    rake = fetch(:rake, 'rake')
+    rails_env_base = 'practice'
     (1..6).each do |i|
       run "cd #{current_path}; #{rake} RAILS_ENV=#{rails_env_base + i} db:migrate"
     end
