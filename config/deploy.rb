@@ -10,6 +10,7 @@ set :host, "humanizingwork.com"
 server "humanizingwork.com", :app, :web, :db, :primary => true
 set :deploy_to, "/var/www/#{application}"
 
+set :rails_env, 'practice'
 set :migrate_env, 'practice'
 
 ssh_options[:port] = 2221
