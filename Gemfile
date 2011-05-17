@@ -4,7 +4,7 @@ gem 'rails', '3.0.4'
 gem 'compass', '>= 0.10.6'
 gem 'haml'
 gem 'fastercsv'
-gem 'mysql2'
+gem 'mysql2', '0.2.6'
 
 group :development, :test do
   gem 'sqlite3'
