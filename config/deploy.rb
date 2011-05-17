@@ -3,8 +3,11 @@ require 'bundler/capistrano'
 set :application, "passenger-pickups"
 
 set :repository, "ssh://humanizingwork.com/var/git/passenger-pickups.git"
+set :branch, "master"
 set :scm, :git
 
+set :host, "humanizingwork.com"
+server "humanizingwork.com", :app, :web, :db, :primary => true
 set :deploy_to, "/var/www/#{application}"
 
 ssh_options[:port] = 2221
@@ -26,5 +29,3 @@ set :deployment_strategy, :passenger
 $:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 require "rvm/capistrano"
 set :rvm_ruby_string, 'ruby-1.8.7-p334@passenger_pickups'
-
-set :host, "pp.humanizingwork.com"
