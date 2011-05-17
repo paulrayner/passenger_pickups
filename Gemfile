@@ -4,6 +4,7 @@ gem 'rails', '3.0.4'
 gem 'compass', '>= 0.10.6'
 gem 'haml'
 gem 'fastercsv'
+gem 'mysql2'
 
 group :development, :test do
   gem 'sqlite3'
@@ -17,6 +18,3 @@ group :development, :test do
   gem 'ruby_parser'
 end
 
-group :practice do
-  gem 'mysql2'
-end
