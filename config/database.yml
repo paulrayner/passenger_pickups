@@ -16,10 +16,12 @@ test: &test
   timeout: 5000
 
 practice:
-  adapter: sqlite3
-  database: db/practice.sqlite3
+  adapter: mysql2
+  encoding: utf8
+  database: passenger_pickups
   pool: 5
-  timeout: 5000
+  username: passenger_pickups
+  password: passenger_pickups Passw0rd
 
 production:
   adapter: sqlite3
