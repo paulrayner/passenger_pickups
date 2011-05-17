@@ -20,8 +20,8 @@ practice:
   encoding: utf8
   database: passenger_pickups
   pool: 5
-  username: passenger_pickups
-  password: passenger_pickups Passw0rd
+  username: passengerpickups
+  password: passengerpickups Passw0rd
 
 production:
   adapter: sqlite3
