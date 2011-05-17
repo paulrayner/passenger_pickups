@@ -21,3 +21,10 @@ after "deploy:update", "deploy:cleanup"
 before "deploy:finalize_update", "bundle:install"
 
 set :deployment_strategy, :passenger
+
+# rvm integration
+$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
+require "rvm/capistrano"
+set :rvm_ruby_string, 'ruby-1.8.7-p334@passenger_pickups'
+
+set :host, "pp.humanizingwork.com"
