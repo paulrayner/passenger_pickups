@@ -54,4 +54,12 @@ namespace :deploy do
       run "cd #{current_path}; #{rake} RAILS_ENV=#{rails_env_base}#{i} db:migrate"
     end
   end
+
+  task :populate_all, :roles => :db do
+    rake = fetch(:rake, 'rake')
+    rails_env_base = 'practice'
+    (1..6).each do |i|
+      run "cd #{current_path}; #{rake} RAILS_ENV=#{rails_env_base}#{i} db:demo_data:load"
+    end
+  end
 end
