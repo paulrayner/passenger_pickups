@@ -12,7 +12,7 @@ set :deploy_to, "/var/www/#{application}"
 
 ssh_options[:port] = 2221
 set :user, 'richard'
-set :deploy_via, :fast_remote_cache
+set :deploy_via, :remote_cache
 set :copy_exclude, [".git/*", ".svn/*", ".idea/*"]
 
 # Customise the deployment
