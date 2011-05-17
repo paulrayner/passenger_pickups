@@ -48,11 +48,9 @@ namespace :deploy do
     run "touch #{current_release}/tmp/restart.txt"
   end
 
-  namespace :migrate do
-    task :all, :roles => :db do
-      (1..6).each do |i|
-        run "cd #{current_path}; #{rake} RAILS_ENV=#{rails_env_base + i} db:migrate"
-      end
+  task :migrate_all, :roles => :db do
+    (1..6).each do |i|
+      run "cd #{current_path}; #{rake} RAILS_ENV=#{rails_env_base + i} db:migrate"
     end
   end
 end
