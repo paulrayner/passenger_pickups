@@ -21,15 +21,3 @@ after "deploy:update", "deploy:cleanup"
 before "deploy:finalize_update", "bundle:install"
 
 set :deployment_strategy, :passenger
-
-namespace :db do
-  namespace :demo_data do
-    desc "Run the db:demo_data:load Rake task"
-    task :load, :roles => :db, :only => {:primary => true} do
-      rake = fetch(:rake, 'rake')
-      rails_env = fetch(:rails_env, 'practice')
-      run "cd #{current_path}; #{rake} RAILS_ENV=#{rails_env} db:demo_data:load"
-    end
-  end
-end
-
