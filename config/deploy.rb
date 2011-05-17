@@ -2,7 +2,7 @@ require 'bundler/capistrano'
 
 set :application, "passenger-pickups"
 
-set :repository, "ssh://humanizingwork.com/var/git/passenger-pickups.git"
+set :repository, "ssh://drmac.humanizingwork.com/var/git/passenger_pickups.git"
 set :branch, "master"
 set :scm, :git
 
