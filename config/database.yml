@@ -15,13 +15,15 @@ test: &test
   pool: 5
   timeout: 5000
 
-practice:
+<% (1..6).each do |i| %>
+practice<%= i %>:
   adapter: mysql2
   encoding: utf8
-  database: passenger_pickups
+  database: passenger_pickups<%= i %>
   pool: 5
   username: passengerpickups
   password: passengerpickups Passw0rd
+<% end %>
 
 production:
   adapter: sqlite3

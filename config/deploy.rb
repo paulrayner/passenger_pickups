@@ -10,7 +10,8 @@ set :host, "humanizingwork.com"
 server "humanizingwork.com", :app, :web, :db, :primary => true
 set :deploy_to, "/var/www/#{application}"
 
-set :rails_env, 'practice'
+set :rails_env, 'practice1'
+set :rails_env_base, 'practice'
 
 ssh_options[:port] = 2221
 set :user, 'richard'
@@ -45,5 +46,13 @@ namespace :deploy do
   desc "Restart Application"
   task :restart, :roles => :app do
     run "touch #{current_release}/tmp/restart.txt"
+  end
+
+  namespace :migrate do
+    task :all, :roles => :db do
+      (1..6).each do |i|
+        run "cd #{current_path}; #{rake} RAILS_ENV=#{rails_env_base + i} db:migrate"
+      end
+    end
   end
 end
