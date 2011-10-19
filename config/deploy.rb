@@ -10,7 +10,8 @@ set :host, "humanizingwork.com"
 server "humanizingwork.com", :app, :web, :db, :primary => true
 
 (1..6).each do |i|
-  task "#practice{i}" do
+  desc "Set the stage to practice#{i}"
+  task "practice#{i}" do
     set :deploy_to, "/var/www/#{application}-practice#{i}"
     set :rails_env, "practice#{i}"
   end
