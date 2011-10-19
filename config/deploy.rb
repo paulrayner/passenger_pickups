@@ -8,9 +8,13 @@ set :scm, :git
 
 set :host, "humanizingwork.com"
 server "humanizingwork.com", :app, :web, :db, :primary => true
-set :deploy_to, "/var/www/#{application}"
 
-set :rails_env, 'practice1'
+(1..6).each do |i|
+  task "#practice{i}" do
+    set :deploy_to, "/var/www/#{application}-practice#{i}"
+    set :rails_env, "practice#{i}"
+  end
+end
 
 ssh_options[:port] = 2221
 set :user, 'richard'
